@@ -857,11 +857,8 @@ anyName (AnyName a b) = colId a <> foldMap attrs b
 
 -- * Types
 
-typename (Typename a b c d) =
-  bool "" "SETOF " a <> simpleTypename b <> foldMap typenameArrayDimensionsWithQuestionMark d
-
-typenameArrayDimensionsWithQuestionMark (a, b) =
-  typenameArrayDimensions a
+typename (Typename a b c) =
+  bool "" "SETOF " a <> simpleTypename b <> foldMap typenameArrayDimensions c
 
 typenameArrayDimensions = \case
   BoundsTypenameArrayDimensions a -> arrayBounds a

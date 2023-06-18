@@ -2021,22 +2021,19 @@ typename =
     a <- option False (keyword "setof" *> space1 $> True)
     b <- simpleTypename
     endHead
-    c <- trueIfPresent (space *> char '?')
     asum
       [ do
           space1
           keyword "array"
           endHead
           d <- optional (space *> inBrackets iconst)
-          e <- trueIfPresent (space *> char '?')
-          return (Typename a b c (Just (ExplicitTypenameArrayDimensions d, e))),
+          return (Typename a b (Just (ExplicitTypenameArrayDimensions d))),
         do
           space
           d <- arrayBounds
           endHead
-          e <- trueIfPresent (space *> char '?')
-          return (Typename a b c (Just (BoundsTypenameArrayDimensions d, e))),
-        return (Typename a b c Nothing)
+          return (Typename a b (Just (BoundsTypenameArrayDimensions d))),
+        return (Typename a b Nothing)
       ]
 
 arrayBounds = sep1 space (inBrackets (optional iconst))

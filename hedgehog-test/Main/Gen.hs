@@ -833,7 +833,7 @@ arrayDimensionsAmount = int (Range.exponential 0 4)
 
 -- ** Typename
 
-typename = Typename <$> bool <*> simpleTypename <*> pure False <*> maybe ((,) <$> typenameArrayDimensions <*> pure False)
+typename = Typename <$> bool <*> simpleTypename <*> maybe typenameArrayDimensions
 
 typenameArrayDimensions =
   choice
