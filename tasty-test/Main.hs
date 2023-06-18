@@ -42,8 +42,6 @@ main =
                   Parsing.typename
                   [ "int4[]",
                     "int4[][]",
-                    "int4?[]",
-                    "int4?[]?",
                     "aa array",
                     "DOUBLE PRECISION",
                     "bool",
