@@ -1965,10 +1965,6 @@ data IndirectionEl
 -- * Types
 
 -- |
--- Typename definition extended with custom question-marks for nullability specification.
---
--- To match the standard Postgres syntax simply interpret their presence as a parsing error.
---
 -- ==== References
 -- @
 -- Typename:
@@ -1984,10 +1980,8 @@ data Typename
       Bool
       -- ^ SETOF
       SimpleTypename
-      Bool
-      -- ^ Question mark
-      (Maybe (TypenameArrayDimensions, Bool))
-      -- ^ Array dimensions possibly followed by a question mark
+      (Maybe TypenameArrayDimensions)
+      -- ^ Array dimensions
   deriving (Show, Generic, Eq, Ord)
 
 -- |
